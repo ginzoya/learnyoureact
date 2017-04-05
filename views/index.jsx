@@ -27,13 +27,23 @@ class TodoList extends React.Component {
 }
 
 class Todo extends React.Component {
-	render () {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
 		return (
 			<tr>
+				<td style={{ border: "1px solid black" }}>
+					<input type="checkbox" checked={false} onChange={this.handleChange.bind(this)}/>
+				</td>
 				<td style={{border:"1px solid black"}}>{this.props.title}</td>
 				<td style={{border:"1px solid black"}}>{this.props.children}</td>
 			</tr>
 		);
+	}
+	handleChange () {
+		this.setState({ checked: !this.checked });
 	}
 }
 Todo.propTypes = {
